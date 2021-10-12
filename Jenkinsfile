@@ -38,8 +38,8 @@ stages{
             script{
 
                 buildImage 'karthik0517/java-maven-app:${BUILD_NUMBER}'
-                DockerLogin()
-                DockerPush 'karthik0517/java-maven-app:${BUILD_NUMBER}'
+                dockerLogin()
+                dockerPush 'karthik0517/java-maven-app:${BUILD_NUMBER}'
             }
             
         }
