@@ -1,5 +1,5 @@
 #!/usr/bin/env groovy
-@Library('shared-jenkin-lib')
+@Library('shared-lib-jenkin')
 def gv
 
 pipeline{
@@ -36,7 +36,7 @@ stages{
     stage("build image"){
         steps{
             script{
-                buildImage 'karthik0517/java-maven-app:${BRANCH_NAME}_${BUILD_NUMBER}'
+                buildImage 'karthik0517/java-maven-app:${BUILD_NUMBER}'
             }
             
         }
