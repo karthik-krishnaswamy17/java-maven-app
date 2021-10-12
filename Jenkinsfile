@@ -27,7 +27,7 @@ stages{
             
             script{
                 
-                buildJar()
+                buildJar 'karthik0517/java-maven-app:${BRANCH_NAME}_${BUILD_NUMBER}'
             }
         }
     }
