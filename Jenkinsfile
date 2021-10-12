@@ -27,7 +27,7 @@ stages{
             
             script{
                 
-                buildJar 'karthik0517/java-maven-app:${BRANCH_NAME}_${BUILD_NUMBER}'
+                buildJar()
             }
         }
     }
@@ -36,7 +36,7 @@ stages{
     stage("build image"){
         steps{
             script{
-                buildImage()
+                buildImage 'karthik0517/java-maven-app:${BRANCH_NAME}_${BUILD_NUMBER}'
             }
             
         }
