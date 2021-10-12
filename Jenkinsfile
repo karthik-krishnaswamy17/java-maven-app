@@ -33,10 +33,13 @@ stages{
     }
 
 
-    stage("build image"){
+    stage("build and push image"){
         steps{
             script{
+
                 buildImage 'karthik0517/java-maven-app:${BUILD_NUMBER}'
+                DockerLogin()
+                DockerPush 'karthik0517/java-maven-app:${BUILD_NUMBER}'
             }
             
         }
