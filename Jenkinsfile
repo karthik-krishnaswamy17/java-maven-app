@@ -26,7 +26,7 @@ stages{
         steps{
             
             script{
-                echo "++++++++++++++++++++"
+                echo "+++++++++++++++++++++++"
                 buildJar()
             }
         }
