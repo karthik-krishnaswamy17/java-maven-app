@@ -18,7 +18,9 @@ stages{
                 versions:set \
                 -DnewVersion=\\\${parsedVersion.majorVersion}.\\\${parsedVersion.minorVersion}.\\\${parsedVersion.nextIncrementalVersion} \
                 versions:commit'
-
+                def matcher=readFile('pom.xml')=~ '<version>(.+)</version>'
+                def version=matcher[0][1]
+                env.IMAGE_NAME="$version-$BUILD_NUMBER"
                 gv= load "script.groovy"    
             }
             
@@ -41,9 +43,9 @@ stages{
         steps{
             script{
 
-                buildImage 'karthik0517/java-maven-app:${BUILD_NUMBER}'
+                buildImage "karthik0517/java-maven-app:$IMAGE_NAME"
                 dockerLogin()
-                dockerPush 'karthik0517/java-maven-app:${BUILD_NUMBER}'
+                dockerPush 'karthik0517/java-maven-app:$IMAGE_NAME'
             }
             
         }
