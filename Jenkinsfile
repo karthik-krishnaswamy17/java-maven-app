@@ -19,8 +19,8 @@ stages{
                 -DnewVersion=\\\${parsedVersion.majorVersion}.\\\${parsedVersion.minorVersion}.\\\${parsedVersion.nextIncrementalVersion} \
                 versions:commit'
 
-                 def matcher = readFile('pom.xml') =~ '<version>(.+)</version>'
-                // def version= matcher[0][1]
+                  def m = readFile('pom.xml') =~ '<version>(.+)</version>'
+                // def version= m[0][1]
                 // env.IMAGE_NAME= "$version-$BUILD_NUMBER"
                 gv= load "script.groovy"    
             }
