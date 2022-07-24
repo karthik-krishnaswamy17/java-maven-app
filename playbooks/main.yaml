@@ -1,0 +1,29 @@
+
+- name: Install docker 
+  hosts: "{{docker_node}}"
+  vars_files:
+    - "./vars"
+  tasks:
+    - name: Install docker
+      yum:
+        name: docker
+        update_cache: yes
+        state: present
+
+    - name: Install docker-compose
+      get_url:
+        url: https://github.com/docker/compose/releases/download/v2.7.0/docker-compose-linux-x86_64
+        dest: /usr/bin/docker-compose
+        mode: +x
+
+    - name: Add ec2-user to docker  
+      user:
+        name: ec2-user  
+        groups: docker
+        append: yes
+    - meta: reset_connection
+
+    - name: Start docker  
+      service:
+        name: docker
+        state: started
