@@ -5,7 +5,7 @@
     - "./vars"
   tasks:
     - name: Install docker
-      yum:
+      apt:
         name: docker
         update_cache: yes
         state: present
@@ -16,11 +16,11 @@
         dest: /usr/bin/docker-compose
         mode: +x
 
-    - name: Add ec2-user to docker  
+    - name: Add ubuntu to docker  
       user:
-        name: ec2-user  
+        name: eubutnu 
         groups: docker
-        append: yes
+      
     - meta: reset_connection
 
     - name: Start docker  
